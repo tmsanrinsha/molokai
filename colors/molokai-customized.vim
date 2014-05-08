@@ -302,7 +302,9 @@ call s:highlight("DiffAdd",    s:hybrid_addfg,    s:hybrid_addbg)
 call s:highlight("DiffChange", s:hybrid_changefg, s:hybrid_changebg)
 call s:highlight("DiffDelete", s:background,      s:hybrid_red)
 call s:highlight("DiffText",   s:background,      s:hybrid_blue)
-call s:highlight("Pmenu",      s:white,           s:background2)
+" call s:highlight("Pmenu",      s:white,           s:background2)
+exe 'hi Pmenu ctermfg='.s:wombat_green.' ctermbg=235'
+
 call s:highlight("PmenuSel",   s:background,      s:wombat_green)
 call s:highlight("WildMenu",   s:background,      s:wombat_green)
 call s:highlight("Visual",     s:background,      s:wombat_green)
