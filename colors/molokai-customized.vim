@@ -29,11 +29,12 @@ endif
 let s:white           = has("gui_running") ? "#F8F8F2" : "254"
 let s:background      = has("gui_running") ? "#1B1D1E" : "233"
 let s:background2     = has("gui_running") ? "#121212" : "234"
+let s:background3     = has("gui_running") ? "#262626" : "235"
 " let s:blue          = has("gui_running") ? "#2694F9" : "233"
 " let s:lightblue       = has("gui_running") ? "#5BA1CF" : "25"
 let s:lightblue       = has("gui_running") ? "#5BA1CF" : "81"
 " let s:lightgreen    = has("gui_running") ? "#7AF926" : "233"
-let s:wombat_green    = has("gui_running") ? "#CC6666" : "192"
+let s:wombat_green    = has("gui_running") ? "#cae982" : "192"
 let s:hybrid_red      = has("gui_running") ? "#CC6666" : "167"
 let s:hybrid_blue     = has("gui_running") ? "#81A2BE" : "110"
 let s:hybrid_addbg    = has("gui_running") ? "#5F875F" : "65"
@@ -303,7 +304,7 @@ call s:highlight("DiffChange", s:hybrid_changefg, s:hybrid_changebg)
 call s:highlight("DiffDelete", s:background,      s:hybrid_red)
 call s:highlight("DiffText",   s:background,      s:hybrid_blue)
 " call s:highlight("Pmenu",      s:white,           s:background2)
-exe 'hi Pmenu ctermfg='.s:wombat_green.' ctermbg=235'
+call s:highlight("Pmenu",      s:wombat_green, s:background3)
 
 call s:highlight("PmenuSel",   s:background,      s:wombat_green)
 call s:highlight("WildMenu",   s:background,      s:wombat_green)
