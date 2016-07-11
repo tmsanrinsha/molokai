@@ -216,7 +216,7 @@ if &t_Co > 255
    " hi Pmenu           ctermfg=81  ctermbg=16
    " hi PmenuSel        ctermfg=255 ctermbg=242
    hi PmenuSbar                   ctermbg=232
-   hi PmenuThumb      ctermfg=81
+   " hi PmenuThumb      ctermfg=81
 
    hi PreCondit       ctermfg=118               cterm=bold
    hi PreProc         ctermfg=118
@@ -316,6 +316,7 @@ call s:highlight("DiffDelete", s:background,      s:hybrid_red)
 call s:highlight("DiffText",   s:background,      s:hybrid_blue)
 call s:highlight("Pmenu",      s:wombat_green, s:background3)
 call s:highlight("PmenuSel",   s:background,      s:wombat_green)
+call s:highlight("PmenuThumb",  s:background,      s:wombat_green)
 call s:highlight("WildMenu",   s:background,      s:wombat_green)
 call s:highlight("Visual",     s:background,      s:wombat_green)
 
