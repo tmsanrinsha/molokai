@@ -18,6 +18,7 @@ if v:version > 580
         syntax reset
     endif
 endif
+
 let g:colors_name='molokai-customized'
 
 if exists('g:molokai_original')
@@ -26,18 +27,59 @@ else
     let s:molokai_original = 0
 endif
 
-let s:white           = has('gui_running') ? '#F8F8F2' : '254'
-let s:background      = has('gui_running') ? '#1B1D1E' : '233'
-let s:background2     = has('gui_running') ? '#121212' : '234'
-let s:background3     = has('gui_running') ? '#262626' : '235'
-let s:lightblue       = has('gui_running') ? '#5BA1CF' : '81'
-let s:wombat_green    = has('gui_running') ? '#cae982' : '192'
-let s:hybrid_red      = has('gui_running') ? '#CC6666' : '167'
-let s:hybrid_blue     = has('gui_running') ? '#81A2BE' : '110'
-let s:hybrid_addbg    = has('gui_running') ? '#5F875F' : '65'
-let s:hybrid_addfg    = has('gui_running') ? '#d7ffaf' : '193'
-let s:hybrid_changebg = has('gui_running') ? '#5F5F87' : '60'
-let s:hybrid_changefg = has('gui_running') ? '#d7d7ff' : '189'
+if !exists('g:molokai_16_color')
+    let g:molokai_16_color = 0
+endif
+
+if has('gui_running') 
+    let s:vmode = "gui"
+    let s:white           = '#F8F8F2'
+    let s:background      = '#1B1D1E'
+    let s:background2     = '#121212'
+    let s:background3     = '#262626'
+    let s:cursor_line     = '#293739'
+    let s:lightblue       = '#5BA1CF'
+    let s:wombat_green    = '#cae982'
+    let s:hybrid_red      = '#CC6666'
+    let s:hybrid_blue     = '#81A2BE'
+    let s:hybrid_addbg    = '#5F875F'
+    let s:hybrid_addfg    = '#d7ffaf'
+    let s:hybrid_changebg = '#5F5F87'
+    let s:hybrid_changefg = '#d7d7ff'
+elseif g:molokai_16_color
+    let s:vmode = "cterm"
+    let s:white           = '254'
+    let s:background      = '233'
+    let s:background2     = '234'
+    let s:background3     = '235'
+    let s:cursor_line     = '0'
+    let s:lightblue       = '81'
+    let s:wombat_green    = '192'
+    let s:hybrid_red      = '167'
+    let s:hybrid_blue     = '110'
+    let s:hybrid_addbg    = '65'
+    let s:hybrid_addfg    = '193'
+    let s:hybrid_changebg = '60'
+    let s:hybrid_changefg = '189'
+else
+    let s:vmode = "cterm"
+    let s:white           = '254'
+    let s:background      = '233'
+    let s:background2     = '234'
+    let s:background3     = '235'
+    let s:cursor_line     = '234'
+    let s:lightblue       = '81'
+    let s:wombat_green    = '192'
+    let s:hybrid_red      = '167'
+    let s:hybrid_blue     = '110'
+    let s:hybrid_addbg    = '65'
+    let s:hybrid_addfg    = '193'
+    let s:hybrid_changebg = '60'
+    let s:hybrid_changefg = '189'
+endif
+
+exe 'hi CursorLine '   . s:vmode.'bg='.s:cursor_line . (s:vmode == 'cterm' ? ' cterm=none' : '')
+exe 'hi CursorColumn ' . s:vmode.'bg='.s:cursor_line
 
 function! s:highlight(group, fg_color, bg_color)
     if has('gui_running')
@@ -138,7 +180,7 @@ hi TabLine         guibg=#1B1D1E guifg=#808080 gui=none
 if s:molokai_original == 1
    hi Normal          guifg=#F8F8F2 guibg=#272822
    hi Comment         guifg=#75715E
-   hi CursorLine                    guibg=#3E3D32
+   " hi CursorLine                    guibg=#3E3D32
    hi CursorLineNr    guifg=#FD971F               gui=none
    hi CursorColumn                  guibg=#3E3D32
    hi ColorColumn                   guibg=#3B3A32
@@ -148,7 +190,7 @@ if s:molokai_original == 1
 else
    hi Normal          guifg=#F8F8F2 guibg=#1B1D1E
    hi Comment         guifg=#7E8E91
-   hi CursorLine                    guibg=#293739
+   " hi CursorLine                    guibg=#293739
    hi CursorLineNr    guifg=#FD971F               gui=none
    hi CursorColumn                  guibg=#293739
    hi ColorColumn                   guibg=#232526
@@ -163,11 +205,11 @@ end
 if &t_Co > 255
    if s:molokai_original == 1
       hi Normal                   ctermbg=234
-      hi CursorLine               ctermbg=235   cterm=none
+      " hi CursorLine               ctermbg=235   cterm=none
       hi CursorLineNr ctermfg=208               cterm=none
    else
       hi Normal       ctermfg=252 ctermbg=233
-      hi CursorLine               ctermbg=234   cterm=none
+      " hi CursorLine               ctermbg=234   cterm=none
       hi CursorLineNr ctermfg=208               cterm=none
    endif
    hi Boolean         ctermfg=135
@@ -261,7 +303,7 @@ if &t_Co > 255
    hi ColorColumn                 ctermbg=236
    " hi CursorColumn                ctermbg=236
    hi CursorColumn                ctermbg=234
-   hi CursorLine                  ctermbg=234   cterm=none
+   " hi CursorLine                  ctermbg=234   cterm=none
    " hi LineNr          ctermfg=250 ctermbg=236
    hi LineNr          ctermfg=250 ctermbg=234
    hi NonText         ctermfg=59
@@ -271,7 +313,7 @@ if &t_Co > 255
 
    if exists('g:rehash256') && g:rehash256 == 1
        hi Normal       ctermfg=252 ctermbg=234
-       hi CursorLine               ctermbg=236   cterm=none
+       " hi CursorLine               ctermbg=236   cterm=none
        hi CursorLineNr ctermfg=208               cterm=none
 
        hi Boolean         ctermfg=141
