@@ -31,6 +31,9 @@ if !exists('g:molokai_16_color')
     let g:molokai_16_color = 0
 endif
 
+" chrisbra/ColorizerのColorHightを使うとhighlight行の色をその色にすることがある
+" それを考えると直接highlight行を書いたほうがいいかも
+
 if has('gui_running') 
     let s:vmode = "gui"
     let s:white           = '#F8F8F2'
@@ -143,7 +146,8 @@ hi PreProc         guifg=#A6E22E
 hi Question        guifg=#66D9EF
 hi Repeat          guifg=#F92672               gui=bold
 " hi Search          guifg=#000000 guibg=#FFE792
-hi Search          guifg=#FFFFFF guibg=#455354
+hi Search          guifg=#FFE792 guibg=#000000 gui=reverse
+" hi Search          guifg=#FFFFFF guibg=#455354
 " marks
 hi SignColumn      guifg=#A6E22E guibg=#232526
 hi SpecialChar     guifg=#F92672               gui=bold
@@ -265,7 +269,8 @@ if &t_Co > 255
    hi Question        ctermfg=81
    hi Repeat          ctermfg=161               cterm=bold
    " hi Search          ctermfg=0   ctermbg=222   cterm=NONE
-   hi Search          ctermfg=253 ctermbg=66
+   hi Search          ctermfg=222   ctermbg=NONE   cterm=reverse
+   " hi Search          ctermfg=253 ctermbg=66
 
    " marks column
    hi SignColumn      ctermfg=118 ctermbg=235
